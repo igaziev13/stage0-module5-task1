@@ -1,7 +1,5 @@
 package com.epam.mjc.stage0;
 
-//imp__ort java.util.Arrays;
-
 /**
  * Here are the tasks for working with the arrays.
  * <p>
@@ -118,61 +116,52 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        /*for (int i : arr[0])
-            System.out.println(i);
-        System.out.println("\nNEXT DIMENSION\n");
-        for (int i : arr[1])
-            System.out.println(i);*/
-        //Sorting array #0
-        if (arr.length>0)
-            for (int i=0;i<arr[0].length;i++) {
-                for (int j = 0; j < arr[0].length; j++) {
+        /*System.out.println("Unsorted:");
+        for (int[] ints : arr) {
+            for (int anInt : ints) System.out.print(anInt + " ");
+            System.out.println();
+        }*/
+        //Sorting items...
+        for (int k=0;k<arr.length;k++)
+            for (int i=0;i<arr[k].length;i++) {
+                for (int j = 0; j < arr[k].length; j++) {
                     int tmp;
-                    if (arr[0][i] < arr[0][j]) {
-                        tmp = arr[0][i];
-                        arr[0][i] = arr[0][j];
-                        arr[0][j] = tmp;
+                    if (arr[k][i] < arr[k][j]) {
+                        tmp = arr[k][i];
+                        arr[k][i] = arr[k][j];
+                        arr[k][j] = tmp;
                     }
                 }
             }
 
-        //Sorting array #1
-        if (arr.length==2) {
-            for (int i = 0; i < arr[1].length; i++) {
-                for (int j = 0; j < arr[1].length; j++) {
-                    int tmp;
-                    if (arr[1][i] < arr[1][j]) {
-                        tmp = arr[1][i];
-                        arr[1][i] = arr[1][j];
-                        arr[1][j] = tmp;
-                    }
+        //Sorting dimensions...
+        //Unable to sort as Expected array, when two sub-arrays are equal, and positions should be the same as in un-sorted array
+        for (int i=0;i<arr.length;i++) {
+            for (int j=0;j<arr.length;j++) {
+                int[] temp;
+                if (arr[j].length > arr[i].length) {
+                    temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
                 }
-            }
-            //Sorting dimensions
-            int[] temp = arr[0];
-            if (arr[0].length > arr[1].length) {
-                arr[0] = arr[1];
-                arr[1] = temp;
             }
         }
+        /*System.out.println("Sorted:");
+        for (int[] ints : arr) {
+            for (int anInt : ints) System.out.print(anInt + " ");
+            System.out.println();
+        }*/
         return arr;
     }
-    public static void main(String[] args){
-        ArrayTasks test = new ArrayTasks();
-        int[][] t = {{10, 5, -10, 2, 5, 7, 1, -88, 30, 91, 3}, {}};//{{10, 5, -10, 2, 5, 7, 0, -88, 0, 91, 3},{}};//
+    public static void main(String[] Args)
+    {
+        /*ArrayTasks test = new ArrayTasks();
+        int[][] arr = new int[4][];
+        arr[0] = new int[]{-210, -56, -30 ,0};
+        arr[1] = new int[]{1010, 120};
+        arr[2] = new int[]{-110, 20, -30 ,0};
+        arr[3] = new int[]{500, 69, 170, -80, 190, 100};
 
-        //System.out.println(t[1][2]);
-
-        //t[0] = new int[] {9, 3, 6, 0, -7, 24, 789032, 911, -93098};
-        //t[1] = new int[] {29, -9, 5, 0};
-        t = test.sortRaggedArray(t);
-        System.out.println(t.length);
-        System.out.println(t[0].length);
-        System.out.println(t[1].length);
-        for (int i : t[0])
-            System.out.println(i);
-        //System.out.println("\nNEXT DIMENSION\n");
-        //for (int i : t[1])
-        //    System.out.println(i);
+        test.sortRaggedArray(arr);*/
     }
 }
