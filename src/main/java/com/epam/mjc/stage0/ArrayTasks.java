@@ -116,11 +116,7 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        /*System.out.println("Unsorted:");
-        for (int[] ints : arr) {
-            for (int anInt : ints) System.out.print(anInt + " ");
-            System.out.println();
-        }*/
+
         //Sorting items...
         for (int k=0;k<arr.length;k++)
             for (int i=0;i<arr[k].length;i++) {
@@ -134,34 +130,23 @@ public class ArrayTasks {
                 }
             }
 
-        //Sorting dimensions...
-        //Unable to sort as Expected array, when two sub-arrays are equal, and positions should be the same as in un-sorted array
+        //Sorting dimensions... Bubble Sorting
+
+        int[] temp;
         for (int i=0;i<arr.length;i++) {
-            for (int j=0;j<arr.length;j++) {
-                int[] temp;
-                if (arr[j].length > arr[i].length) {
-                    temp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = temp;
+            for (int j = 1; j < arr.length - i; j++) {
+                if (arr[j - 1].length > arr[j].length) {
+                    temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
                 }
             }
         }
-        /*System.out.println("Sorted:");
-        for (int[] ints : arr) {
-            for (int anInt : ints) System.out.print(anInt + " ");
-            System.out.println();
-        }*/
+
         return arr;
     }
     public static void main(String[] Args)
     {
-        /*ArrayTasks test = new ArrayTasks();
-        int[][] arr = new int[4][];
-        arr[0] = new int[]{-210, -56, -30 ,0};
-        arr[1] = new int[]{1010, 120};
-        arr[2] = new int[]{-110, 20, -30 ,0};
-        arr[3] = new int[]{500, 69, 170, -80, 190, 100};
 
-        test.sortRaggedArray(arr);*/
     }
 }
